@@ -7,11 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,8 +24,7 @@ public class Carro{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @NotEmpty
+   /* @NotEmpty
     @Size(max = 20)
     @Column(nullable = false, length = 20)
     private String marca;
@@ -34,7 +32,7 @@ public class Carro{
     @NotEmpty
     @Size(max = 20)
     @Column(nullable = false, length = 20)
-    private String modelo;
+    private String modelo;*/
 
     @NotNull
     @Column(nullable = false)
@@ -48,5 +46,8 @@ public class Carro{
     @Size(max =20)
     @Column(nullable = false, length = 10)
     private String placa;
+
+    @ManyToOne
+    private Modelo modelo;
 
 }

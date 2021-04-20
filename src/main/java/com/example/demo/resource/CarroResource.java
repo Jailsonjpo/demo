@@ -27,7 +27,7 @@ public class CarroResource {
     @Autowired
     private CarroRepository repository;
 
-    @ApiOperation(value = "Inclui o carro na lista de carros e o habiulita")
+    @ApiOperation(value = "Inclui o carro na lista de carros e o habilita")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Retorna o path do carro"),
             @ApiResponse(code = 483, message = "Você não tem permissao"),
@@ -70,7 +70,8 @@ public class CarroResource {
             @RequestParam(name = "sort", required = false, defaultValue = "ano") String sort,
             @RequestParam(name = "order", required = false, defaultValue = "DESC") String order) {
 
-        Example<Carro> example = Example.of(Carro.builder().cor(cor).marca(marca).modelo(modelo).build());
+        Example<Carro> example = Example.of(Carro.builder().cor(cor).build());
+        //Example<Carro> example = Example.of(Carro.builder().cor(cor).marca(marca).modelo(modelo).build());
 
         return repository.findAll(example);
     }
